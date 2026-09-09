@@ -9,7 +9,7 @@ public class ListingPage extends BasePage {
 
     private final By headline = By.cssSelector("h1.title__text");
     private final By itemCounter = By.cssSelector("div.products-counter");
-    private final By cards = By.xpath("div.setout__box");
+    private final By cards = By.cssSelector("div.setout__box");
 
 
     public ListingPage(WebDriver driver) {
@@ -22,7 +22,10 @@ public class ListingPage extends BasePage {
     }
 
     public ListingPage checkListingItemCount() {
-        Assert.assertEquals(driver.findElement(itemCounter).getText(), 1186);
+
+        int countItems = Integer.parseInt(driver.findElement(itemCounter).getText()
+                        .replaceAll("\\D", ""));
+        Assert.assertEquals(countItems, 1186);
         return this;
     }
 
