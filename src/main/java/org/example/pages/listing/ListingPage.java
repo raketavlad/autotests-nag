@@ -10,6 +10,7 @@ public class ListingPage extends BasePage {
     private final By headline = By.cssSelector("h1.title__text");
     private final By itemCounter = By.cssSelector("div.products-counter");
     private final By cards = By.cssSelector("div.setout__box");
+    private final By inStock = By.cssSelector("div[aria-label='Наличие товаров']");
 
 
     public ListingPage(WebDriver driver) {
@@ -21,11 +22,11 @@ public class ListingPage extends BasePage {
         return this;
     }
 
-    public ListingPage checkListingItemCount() {
+    public ListingPage checkListingItemCount(int expectedItemCount) {
 
         int countItems = Integer.parseInt(driver.findElement(itemCounter).getText()
                         .replaceAll("\\D", ""));
-        Assert.assertEquals(countItems, 1186);
+        Assert.assertEquals(countItems, expectedItemCount);
         return this;
     }
 

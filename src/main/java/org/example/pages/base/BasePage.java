@@ -12,6 +12,7 @@ import static org.example.common.Config.EXPLICIT_WAIT;
 public class BasePage {
 
     protected WebDriver driver;
+    protected WebDriver wait;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
